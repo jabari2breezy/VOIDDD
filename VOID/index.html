@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOID — DROP 01</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <nav class="nav border-bottom">
+    <div class="nav-left">
+      <a href="#archive" class="nav-link hover-trigger">Shop</a>
+      <a href="#about" class="nav-link hover-trigger">About</a>
+    </div>
+    <div class="nav-center">
+      <a href="#"><img src="hero-logo.png" alt="VOID Logo" class="nav-logo"></a>
+    </div>
+    <div class="nav-right">
+      <a href="#cart" id="cart-toggle" class="nav-link hover-trigger">Cart <span class="nav-cart-count" id="cart-count">0</span></a>
+    </div>
+  </nav>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <span class="cart-title">ARCHIVE</span>
+      <button id="cart-close" class="cart-close hover-trigger">CLOSE</button>
+    </div>
+    <div id="cart-items" class="cart-items">
+      <!-- Items will appear here -->
+      <div class="empty-cart-msg">YOUR ARCHIVE IS EMPTY.</div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary micro-text">
+        <div class="summary-line"><span>SUBTOTAL</span> <span id="cart-subtotal">Tsh 0</span></div>
+        <div class="summary-line"><span>EST. SHIPPING</span> <span>COMPLIMENTARY</span></div>
+        <div class="summary-line total-line border-top"><span>TOTAL</span> <span id="cart-total-value">Tsh 0</span></div>
+      </div>
+      <button class="checkout-btn-advanced hover-trigger">INITIALIZE CHECKOUT</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <!-- WebGL Particle Logo will render here via app.js -->
+    <button id="void-press-hint" class="void-press-hint hover-trigger" type="button">[press me]</button>
+    <div class="hero-subtitle hover-trigger">Drop 01</div>
+  </header>
+
+    <!-- THE VOID TEE Section -->
+    <section id="archive" class="tshirt-section section-block border-top">
+      <div class="split-archive-wrapper">
+        <!-- Left Sticky Viewport -->
+        <div class="sticky-info-side">
+          <div class="archive-header-standalone border-bottom">
+            <span class="section-kicker">The Void Exclusive</span>
+            <h2 class="section-title-epic">The Void Tee</h2>
+          </div>
+          
+          <div id="tshirt-trigger-area" class="tshirt-view-container hover-trigger border-bottom">
+            <canvas id="tshirt-viewport-overlay" class="tshirt-viewport-overlay" aria-hidden="true"></canvas>
+          </div>
+
+          <!-- Under-title interactive canvas -->
+          <div id="void-understage" class="void-understage" aria-hidden="true">
+            <canvas id="void-understage-canvas" class="void-understage-canvas" aria-hidden="true"></canvas>
+          </div>
+
+          <div class="product-details-container">
+            <div class="detail-col border-right">
+                <span class="detail-label micro-text">SPEC // MTRL</span>
+                <span class="detail-value">320GSM HW COTTON</span>
+            </div>
+            <div class="detail-col border-right">
+                <span class="detail-label micro-text">SPEC // FIT</span>
+                <span class="detail-value">OVERSIZED BOX</span>
+            </div>
+            <div class="detail-col border-right">
+                <span class="detail-label micro-text">SPEC // PRICE</span>
+                <span class="detail-value">TSH 25,000</span>
+            </div>
+            <div class="detail-col action-col">
+                <button id="hero-authenticate-btn" class="brutalist-btn wide-btn hover-trigger">AUTHENTICATE & ADD</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Scrolling Gallery -->
+        <div class="scroll-gallery-side">
+          <div class="meltuk-grid vertical-gallery">
+            <!-- Card 1: Core Black -->
+            <div class="meltuk-card hover-trigger">
+              <div class="meltuk-media-wrapper">
+                <img src="front.png" alt="Void Tee Front" class="meltuk-img meltuk-img-front">
+                <img src="back.png" alt="Void Tee Back" class="meltuk-img meltuk-img-back">
+                <button
+                  class="meltuk-quick-add hover-trigger choose-options-btn"
+                  data-product-id="void-tee-drop-01"
+                  data-variant="core-black"
+                  aria-haspopup="dialog"
+                >CHOOSE OPTIONS</button>
+              </div>
+              <div class="meltuk-product-info">
+                <h3 class="meltuk-title">The Void Tee | Core Black</h3>
+                <div class="meltuk-reviews">
+                   <span class="meltuk-stars">★★★★★</span> <span class="meltuk-review-count">38</span>
+                </div>
+                <p class="meltuk-price">Tsh 25,000</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Pure White -->
+            <div class="meltuk-card hover-trigger">
+              <div class="meltuk-media-wrapper">
+                <img src="front.png" alt="Void Tee Front Alternate" class="meltuk-img meltuk-img-front" style="filter: invert(1) hue-rotate(180deg);">
+                <img src="back.png" alt="Void Tee Back Alternate" class="meltuk-img meltuk-img-back" style="filter: invert(1) hue-rotate(180deg);">
+                <button
+                  class="meltuk-quick-add hover-trigger choose-options-btn"
+                  data-product-id="void-tee-drop-01"
+                  data-variant="pure-white"
+                  aria-haspopup="dialog"
+                >CHOOSE OPTIONS</button>
+              </div>
+              <div class="meltuk-product-info">
+                <h3 class="meltuk-title">The Void Tee | Pure White</h3>
+                <div class="meltuk-reviews">
+                   <span class="meltuk-stars">★★★★★</span> <span class="meltuk-review-count">27</span>
+                </div>
+                <p class="meltuk-price">Tsh 25,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- About + Ferrofluid -->
+  <section class="ferrofluid-combined section-block border-top">
+    <div id="about" class="about-panel">
+      <span class="section-kicker micro-text">002 // ORIGIN</span>
+      <h2 class="about-title">ABOUT</h2>
+      <div class="about-body">
+        <p class="about-lead">
+          We are a group of teenagers who saw the underrepresentation of anime-related clothing in Tanzania—and decided to build something different.
+        </p>
+        <p>
+          VOID exists to fill that gap: bold drops, honest quality, and a community that cares about the culture behind the graphics. We design for people who live between worlds—school, streets, and the stories that keep us up at night—and we are building this archive one piece at a time.
+        </p>
+        <p class="about-foot micro-text">
+          [ LOCAL ROOTS // GLOBAL AESTHETIC // COMMUNITY FIRST ]
+        </p>
+      </div>
+    </div>
+
+    <div class="ferrofluid-section" id="ferrofluid-trigger">
+      <div class="ferrofluid-container" id="ferrofluid-canvas-container">
+        <!-- 3D Ferrofluid — full viewport, no HUD chrome -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter section-block border-top" id="newsletter-section">
+    <div class="news-text epic-text">Join the void</div>
+    <div class="news-sub" id="news-status">Early access and drops</div>
+    <form class="news-input-wrapper border-bottom" id="news-form-container" action="#" method="post">
+      <input type="email" name="email" placeholder="EMAIL ADDRESS" class="news-input" id="email-input" required autocomplete="email">
+      <button type="submit" class="news-submit hover-trigger">Submit</button>
+    </form>
+  </section>
+
+  <footer class="footer section-block border-top">
+    <div class="footer-massive-logo">VOID</div>
+    <div class="footer-bottom-grid border-top">
+      <div class="footer-links-col border-right">
+        <span class="col-head micro-text">INDEX</span>
+        <span class="hover-trigger">DROP 01</span>
+        <span class="hover-trigger">ARCHIVE</span>
+      </div>
+      <div class="footer-links-col border-right">
+        <span class="col-head micro-text">LEGAL</span>
+        <span class="hover-trigger">TERMS</span>
+        <span class="hover-trigger">PRIVACY</span>
+      </div>
+      <div class="footer-links-col">
+        <span class="col-head micro-text">SYSTEM</span>
+        <span class="hover-trigger">SYS // ONLINE</span>
+        <span class="hover-trigger">VER // 1.0.4</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mini Cart Notification -->
+  <div id="cart-notification" class="cart-notification">
+    ITEM ADDED TO ARCHIVE
+  </div>
+
+  <!-- Options Modal -->
+  <div id="options-modal" class="options-modal" aria-hidden="true">
+    <div id="options-modal-backdrop" class="options-backdrop"></div>
+    <div class="options-dialog" role="dialog" aria-modal="true" aria-labelledby="options-title">
+      <div class="options-header">
+        <div class="options-title" id="options-title">The Void Tee</div>
+        <button id="options-close-btn" class="options-close hover-trigger">CLOSE</button>
+      </div>
+
+      <div class="options-body">
+        <div class="options-group">
+          <div class="options-label">Size</div>
+          <div class="options-pills" id="options-size-pills">
+            <button class="option-pill" type="button" data-size="XS">XS</button>
+            <button class="option-pill" type="button" data-size="S">S</button>
+            <button class="option-pill" type="button" data-size="M">M</button>
+            <button class="option-pill" type="button" data-size="L">L</button>
+            <button class="option-pill" type="button" data-size="XL">XL</button>
+          </div>
+        </div>
+
+        <div class="options-group">
+          <div class="options-label">Edition</div>
+          <div class="options-pills" id="options-variant-pills">
+            <button class="option-pill" type="button" data-variant="core-black">Core black</button>
+            <button class="option-pill" type="button" data-variant="pure-white">Pure white</button>
+          </div>
+        </div>
+
+        <div class="options-group">
+          <div class="options-label">Finish</div>
+          <div class="options-pills" id="options-finish-pills">
+            <button class="option-pill" type="button" data-finish="matte-ink">Matte ink</button>
+            <button class="option-pill" type="button" data-finish="night-glow">Night glow</button>
+            <button class="option-pill" type="button" data-finish="ion-sheen">Ion sheen</button>
+          </div>
+        </div>
+
+        <div class="options-status-row border-top">
+          <div class="summary-line options-summary-line">
+            <span>Status</span>
+            <span id="options-status-text">Select size</span>
+          </div>
+        </div>
+
+        <div class="options-price-row">
+          <div class="options-label options-muted">Price</div>
+          <div class="options-price" id="options-price-value">Tsh 25,000</div>
+        </div>
+
+        <div class="options-actions">
+          <button id="options-add-to-cart-btn" class="brutalist-btn wide-btn" type="button" disabled>Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling for all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
